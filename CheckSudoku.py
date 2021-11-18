@@ -7,16 +7,16 @@ def IsSudoku(sudoku):
     return True
 
 
-def CheckConstraintSudoku(sudoku, i, j, value):
-    for var in sudoku[i]:
+def CheckConstraintSudoku(sudoku, row_i, col_j, value):
+    for var in sudoku[row_i]:
         if value != 0 and var == value:
             return False
     for row in sudoku:
-        if row[j] != 0 and row[j] == value:
+        if row[col_j] != 0 and row[col_j] == value:
             return False
     sqrt_n = int(math.sqrt(len(sudoku)))
-    block_i = int(i / sqrt_n)
-    block_j = int(j / sqrt_n)
+    block_i = int(row_i / sqrt_n)
+    block_j = int(col_j / sqrt_n)
     qs = range(sqrt_n)
     for i in [block_i * sqrt_n + q for q in qs]:
         for j in [block_j * sqrt_n + q for q in qs]:
