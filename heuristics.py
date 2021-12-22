@@ -5,7 +5,6 @@ def select_unassigned_variable(assignment, sudoku):
         if cell not in assignment:
             unassigned.append(cell)
     criterion = lambda cell: len(sudoku.possibilities[cell])
-    temp=len(sudoku.possibilities['A7'])
     return min(unassigned, key=criterion)
 def order_domain_values(sudoku, cell):
     if len(sudoku.possibilities[cell]) == 1:
@@ -14,8 +13,7 @@ def order_domain_values(sudoku, cell):
     return sorted(sudoku.possibilities[cell], key=criterion)
 def convert(sudoku):
     liststr=""
-    defaulsize=9
-    for i in range(defaulsize):
-        for j in range(defaulsize):
+    for i in range(9):
+        for j in range():
             liststr+=str(sudoku[i][j])
     return liststr

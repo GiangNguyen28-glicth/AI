@@ -1,9 +1,12 @@
-from OnlyBacktracking import solve, print_board
+from Brute_Force import Brute_Force
+from OnlyBacktracking import solve_sudoku, solve_sudoku_backtrack
 from SolverSudoku import SolverSudoku
-from input import sudoku
+from input import sudoku1, sudoku2
 import os
 import platform
 import sys
+from time import time
+from utils import print_board
 platform_system = platform.system()
 def clear_screen():
     if platform_system == 'Linux':
@@ -15,7 +18,7 @@ while True:
     print("Algorithms :")
     print("    1- Simple backtracking")
     print("    2- Backtracking with MRV heuristic")
-    print("    3- Backtracking with MRV and degree heuristic")
+    print("    3- Brute_Force")
     print("    4- Minimum conflicts local search\n")
     print("    0- Exit")
     try:
@@ -24,19 +27,28 @@ while True:
             raise Exception
     except:
         continue
-
     break
 if option == 0:
     sys.exit(0)
 result = None
 
 if option == 1:
-    result = solve(sudoku)
+    t = time()
+    result=solve_sudoku_backtrack(sudoku1)
+    t1 = time() - t
+    print(t1)
     print_board(result)
 elif option == 2:
-    result =SolverSudoku(sudoku)
+    t = time()
+    result =SolverSudoku(sudoku2)
+    t1 = time() - t
+    print(t1)
     print_board(result)
 elif option == 3:
-    temp=0
+    t = time()
+    result=Brute_Force(sudoku1)
+    t1 = time() - t
+    print(t1)
+    print_board(result)
 elif option == 4:
         sys.exit(0)

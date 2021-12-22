@@ -81,5 +81,4 @@ class Sudoku:
         for coords, possibilities in self.possibilities.items():
             if len(possibilities) > 1:
                 return False
-
         return True

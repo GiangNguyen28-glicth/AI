@@ -10,11 +10,10 @@ def solve(grid,index,total):
         print("No solution")
     else:
         if sudoku.isFinished():
-
-            print("{}/{} : AC3 was enough to solve this sudoku !".format(index, total))
-            print("{}/{} : Result: \n{}".format(index, total, sudoku))
-
-        # continue the resolution
+            for cell in sudoku.possibilities:
+                sudoku.possibilities[cell] = sudoku.possibilities[cell][0]
+            result3 = result(sudoku)
+            return result3
         else:
             print("{}/{} : AC3 finished, Backtracking starting...".format(index, total))
             assignment = {}
@@ -27,7 +26,7 @@ def solve(grid,index,total):
 
             # merge the computed values for the cells at one place
             for cell in sudoku.possibilities:
-                sudoku.possibilities[cell] = assignment[cell] if len(cell) > 1 else sudoku.possibilities[cell]
+                sudoku.possibilities[cell] = assignment[cell]
             if assignment:
                result3=result(sudoku)
                return  result3
@@ -43,5 +42,5 @@ def result(self):
 def SolverSudoku(sudoku):
     listr = convert(sudoku)
     sudoku_queue = fetch_sudokus(listr)
-    result4 = solve(listr,1, len(sudoku_queue))
+    result4 = solve(listr, 1, len(sudoku_queue))
     return  result4

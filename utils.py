@@ -56,3 +56,27 @@ def convert(sudoku):
         for j in range(defaulsize):
             liststr+=str(sudoku[i][j])
     return liststr
+def print_board(bo):
+    for i in range(len(bo)):
+        if i % 3 == 0 and i != 0:
+            print("- - - - - - - - - - - - - ")
+
+        for j in range(len(bo[0])):
+            if j % 3 == 0 and j != 0:
+                print(" | ", end="")
+
+            if j == 8:
+                print(bo[i][j])
+            else:
+                print(str(bo[i][j]) + " ", end="")
+def str_to_puzzle(s):
+    puzzleSolution = []
+    for i in range(len(s)):
+        if i % 9 == 0:
+            temp = []
+            for j in s[i:i + 9]:
+                temp.append(int(j))
+            puzzleSolution.append(temp)
+    return puzzleSolution
+class StaticClass:
+    temp=[[],[],[],[],[],[],[],[],[]]
