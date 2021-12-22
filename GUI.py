@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import Entry, IntVar, Tk
-
-
 def SquareCreate():
     sq = []
     for j in range(0, 9):
@@ -22,7 +20,6 @@ def SquareCreate():
             t.delete(0)
             sq.append(data)
     return sq
-
 
 def Chon():
     main.destroy()
