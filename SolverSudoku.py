@@ -43,4 +43,4 @@ def SolverSudoku(sudoku):
     listr = convert(sudoku)
     sudoku_queue = fetch_sudokus(listr)
     result4 = solve(listr, 1, len(sudoku_queue))
-    return  result4
+    return result4
