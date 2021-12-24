@@ -5,12 +5,12 @@ class Sudoku:
     def __init__(self, grid):
         game = list(grid)
         self.cells = list()
-        self.cells = self.generate_coords()
+        self.cells = self.generate_coords() #Khởi tạo các ô
         self.possibilities = dict()
-        self.possibilities = self.generate_possibilities(grid)
-        rule_constraints = self.generate_rules_constraints()
+        self.possibilities = self.generate_possibilities(grid) #Khởi tạo ma trận
+        rule_constraints = self.generate_rules_constraints() # khởi tạo các luật constrainst
         self.binary_constraints = list()
-        self.binary_constraints = self.generate_binary_constraints(rule_constraints)
+        self.binary_constraints = self.generate_binary_constraints(rule_constraints) # Chuyển các luật về dạng Binary constrainst
         self.related_cells = dict()
         self.related_cells = self.generate_related_cells()
         self.pruned = dict()
@@ -62,7 +62,7 @@ class Sudoku:
         for constraint_set in rule_constraints:
             binary_constraints = list()
             for tuple_of_constraint in itertools.permutations(constraint_set, 2):
-                binary_constraints.append(tuple_of_constraint)
+                 binary_constraints.append(tuple_of_constraint)
             for constraint in binary_constraints:
                 constraint_as_list = list(constraint)
                 if (constraint_as_list not in generated_binary_constraints):

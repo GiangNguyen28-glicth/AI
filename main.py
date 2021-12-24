@@ -45,7 +45,7 @@ elif option == 2:
     print_board(result)
 elif option == 3:
     t = time()
-    result=Brute_Force(sudoku3)
+    result=Brute_Force(sudoku1)
     t1 = time() - t
     print(t1)
     print_board(result)

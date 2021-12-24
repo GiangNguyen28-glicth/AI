@@ -1,57 +1,34 @@
-from pprint import pprint
-
-
 def find_next_empty(puzzle):
     for r in range(9):
-        for c in range(9):  # range(9) is 0, 1, 2, ... 8
+        for c in range(9):
             if puzzle[r][c] == 0:
                 return r, c
-    return None, None  # if no spaces in the puzzle are empty (-1)
-
+    return None, None
 def is_valid(puzzle, guess, row, col):
-    # let's start with the row
     row_vals = puzzle[row]
     if guess in row_vals:
-        return False  # if we've repeated, then our guess is not valid!
-
-    # now the column
+        return False
     col_vals = [puzzle[i][col] for i in range(9)]
     if guess in col_vals:
         return False
-
-    # and then the square
-    row_start = (row // 3) * 3  # 10 // 3 = 3, 5 // 3 = 1, 1 // 3 = 0
+    row_start = (row // 3) * 3
     col_start = (col // 3) * 3
 
     for r in range(row_start, row_start + 3):
         for c in range(col_start, col_start + 3):
             if puzzle[r][c] == guess:
                 return False
-
     return True
-
-
 def solve_sudoku(puzzle):
-    # step 1: choose somewhere on the puzzle to make a guess
     row, col = find_next_empty(puzzle)
-
-    # step 1.1: if there's nowhere left, then we're done because we only allowed valid inputs
-    if row is None:  # this is true if our find_next_empty function returns None, None
+    if row is None:
         return True
-        # step 2: if there is a place to put a number, then make a guess between 1 and 9
-    for guess in range(1, 10):  # range(1, 10) is 1, 2, 3, ... 9
-        # step 3: check if this is a valid guess
+    for guess in range(1, 10):
         if is_valid(puzzle, guess, row, col):
-            # step 3.1: if this is a valid guess, then place it at that spot on the puzzle
             puzzle[row][col] = guess
-            # step 4: then we recursively call our solver!
             if solve_sudoku(puzzle):
                 return True
-
-        # step 5: it not valid or if nothing gets returned true, then we need to backtrack and try a new number
-        puzzle[row][col] = 0
-
-    # step 6: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
+    puzzle[row][col] = 0
     return False
 def solve_sudoku_backtrack(sudoku):
     solve_sudoku(sudoku)

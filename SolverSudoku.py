@@ -1,9 +1,9 @@
 from AC3 import AC3
 from backtrack import recursive_backtrack_algorithm
 from sudoku import Sudoku
-from utils import fetch_sudokus, convert
+from utils import convert
 
-def solve(grid,index,total):
+def solve(grid):
     sudoku = Sudoku(grid)
     AC3_result = AC3(sudoku)
     if not AC3_result:
@@ -15,16 +15,12 @@ def solve(grid,index,total):
             result3 = result(sudoku)
             return result3
         else:
-            print("{}/{} : AC3 finished, Backtracking starting...".format(index, total))
+            print("{}/{} : AC3 finished, Backtracking starting...")
             assignment = {}
-            # for the already known values
             for cell in sudoku.cells:
                 if len(sudoku.possibilities[cell]) == 1:
                     assignment[cell] = sudoku.possibilities[cell][0]
-            # start backtracking
             assignment = recursive_backtrack_algorithm(assignment, sudoku)
-
-            # merge the computed values for the cells at one place
             for cell in sudoku.possibilities:
                 sudoku.possibilities[cell] = assignment[cell]
             if assignment:
@@ -41,6 +37,5 @@ def result(self):
         return su
 def SolverSudoku(sudoku):
     listr = convert(sudoku)
-    sudoku_queue = fetch_sudokus(listr)
-    result4 = solve(listr, 1, len(sudoku_queue))
+    result4 = solve(listr)
     return result4
