@@ -4,10 +4,7 @@ def recursive_backtrack_algorithm(assignment, sudoku):
     if len(assignment) == len(sudoku.cells):
         return assignment
     cell = select_unassigned_variable(assignment, sudoku)
-    if cell=='C1':
-        value=0
     for value in order_domain_values(sudoku, cell):
-        temp = order_domain_values(sudoku, cell)
         if is_consistent(sudoku, assignment, cell, value):
             assign(sudoku, cell, value, assignment)
             result = recursive_backtrack_algorithm(assignment, sudoku)

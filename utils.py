@@ -6,7 +6,6 @@ def number_of_conflicts(sudoku, cell, value):
     for related_c in sudoku.related_cells[cell]:
         if len(sudoku.possibilities[related_c]) > 1 and value in sudoku.possibilities[related_c]:
             count += 1
-    temp = count
     return count
 
 

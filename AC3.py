@@ -19,8 +19,6 @@ def AC3(csp, queue=None):
 
 def remove_inconsistent_values(csp, cell_i, cell_j):
     removed = False
-    temp = csp.possibilities[cell_i]
-    temp2 = csp.possibilities[cell_j]
     for value in csp.possibilities[cell_i]:
         if not any([is_different(value, poss) for poss in csp.possibilities[cell_j]]):
             csp.possibilities[cell_i].remove(value)

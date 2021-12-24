@@ -29,11 +29,9 @@ class Sudoku:
         grid_as_list = list(grid)
         possibilities = dict()
         for index, coords in enumerate(self.cells):
-            temp = grid_as_list[index]
             if grid_as_list[index] == "0":
                 possibilities[coords] = list(range(1, 10))
             else:
-                temp1 = [int(grid_as_list[index])]
                 possibilities[coords] = [int(grid_as_list[index])]
 
         return possibilities

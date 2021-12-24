@@ -48,7 +48,6 @@ def sudoku_brute_force(s):
 
 def Brute_Force(sudoku):
     s = ''.join(map(str, [''.join(map(str, i)) for i in sudoku]))
-    temp=s[8]
     StaticClass.temp = [[], [], [], [], [], [], [], [], []]
     sudoku_brute_force(s)
     return StaticClass.temp

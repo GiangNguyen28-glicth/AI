@@ -49,15 +49,3 @@ elif option == 3:
     t1 = time() - t
     print(t1)
     print_board(result)
-elif option == 4:
-    l = [1, 2, 3, 5, 0]
-    print(any(l))
-
-    l = [True,False, False]
-    print(any(l))
-
-    l = [0, False, 8]
-    print(any(l))
-
-    l = []
-    print(any(l))
